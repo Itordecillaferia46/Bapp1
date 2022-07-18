@@ -15,12 +15,12 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(morgan("tiny"));
 app.use(cors());
-/* app.use(express.json()) */
+app.use(express.json())
+
+const palabraPath = require("./routes/Palabras")
 
 //routes
-app.get("/", (req, res) => {
-  res.send("my home page dey show sha");
-});
+app.use("/", palabraPath)
 
 //Settings
 app.set("port", process.env.PORT || 4000);
@@ -31,11 +31,9 @@ app.listen(app.get("port"), () => {
 });
 
 //DB conection
-mongoose.connect(
-  "mongodb+srv://IdanielF10:<password>@cluster0.xdnub.mongodb.net/?retryWrites=true&w=majority"
-);
+
 mongoose
-  .connect(uri, {
+  .connect('mongodb+srv://mapa:QmVzoUIvSL04sIov@cluster0.xmy9g5h.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
