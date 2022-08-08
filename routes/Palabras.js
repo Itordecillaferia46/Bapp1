@@ -4,6 +4,8 @@ const Palabra = require('../models/Palabras');
 
 //get all routes
 
+router.get('/favicon.ico', (req, res) => res.status(204));
+
 router.get('/', async (req, res) => {
 	const palabras = await Palabra.find();
 
